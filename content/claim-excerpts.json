@@ -1,0 +1,98 @@
+{
+  "C01": {
+    "meaning": "A professional role over the stated period, not only exposure to a toolchain",
+    "followUp": "What was your role? / Which work did you perform independently and when?"
+  },
+  "C02": {
+    "meaning": "Understand service ownership, environment differences, release boundaries and operational load",
+    "followUp": "Why five environments? / Which service did you personally support and how?"
+  },
+  "C03": {
+    "meaning": "Account isolation, cluster architecture, network, access, change and operational responsibility",
+    "followUp": "How were clusters provisioned? / Who handled upgrades and node operations?"
+  },
+  "C04": {
+    "meaning": "Module interfaces, provider configuration, dependency/state boundaries and reproducibility",
+    "followUp": "Show a module interface. / Why split state, and how was concurrent change controlled?"
+  },
+  "C05": {
+    "meaning": "Restrict principals, actions, resources and conditions, then verify both allowed and denied behavior",
+    "followUp": "How did you decide the permissions? / Why might an allow still fail?"
+  },
+  "C06": {
+    "meaning": "DNS answers, listeners/rules, target registration, health checks and network return paths",
+    "followUp": "DNS resolves but the endpoint fails: what next? / Which target mode was used?"
+  },
+  "C07": {
+    "meaning": "Commit-to-artifact traceability, appropriate build tools and image publishing",
+    "followUp": "Walk through one workflow. / How is a Java build different from the Python path?"
+  },
+  "C08": {
+    "meaning": "Identify the causal failure, distinguish ownership and verify the fix",
+    "followUp": "What did you inspect first? / What showed that the rerun was a real recovery?"
+  },
+  "C09": {
+    "meaning": "Reusable logic with explicit environment input, permissions, approvals and promotion",
+    "followUp": "What was shared versus environment-specific? / How did a change avoid affecting every environment?"
+  },
+  "C10": {
+    "meaning": "Desired state, pod lifecycle, service routing and configuration injection",
+    "followUp": "What happens after a manifest is applied? / How do you tell config failure from image failure?"
+  },
+  "C11": {
+    "meaning": "Reusable templates, helpers, values contracts and safe rendering",
+    "followUp": "How do values override each other? / What made the chart reusable?"
+  },
+  "C12": {
+    "meaning": "Git source, rendering, destination, reconciliation, sync/health and policy",
+    "followUp": "Can Synced still be Degraded? / How do you reverse a bad GitOps rollout?"
+  },
+  "C13": {
+    "meaning": "Scheduler reservations, runtime enforcement, metrics-based scaling and capacity",
+    "followUp": "Why does HPA show unknown utilization? / Why can replicas increase without fixing latency?"
+  },
+  "C14": {
+    "meaning": "Interpret error, latency, throughput, saturation and release context",
+    "followUp": "Which signal established impact? / How did you narrow down the affected service?"
+  },
+  "C15": {
+    "meaning": "Join request, environment, service and version evidence without assuming correlation proves cause",
+    "followUp": "How did the exception explain the failure? / What competing hypothesis did you test?"
+  },
+  "C16": {
+    "meaning": "Controlled change, blast-radius review, validation, rollback and continuing observation",
+    "followUp": "What changed? / What metric or request proved recovery, and who approved the action?"
+  },
+  "C17": {
+    "meaning": "Distinguish source detection, delivery, acknowledgement, escalation and closure",
+    "followUp": "How was the incident noticed? / What if Slack delivery fails?"
+  },
+  "C18": {
+    "meaning": "Identity/application assignment versus each product's authorization and approval process",
+    "followUp": "Which role was assigned where? / How was privilege reviewed and revoked?"
+  },
+  "C19": {
+    "meaning": "GitHub token, restricted trust, STS exchange and scoped AWS permissions",
+    "followUp": "What part did you support? / What do sub and aud prevent?"
+  },
+  "C20": {
+    "meaning": "Select correct targets, interpret results and implement an approved remediation policy",
+    "followUp": "What would you do with a critical finding? / What differs between an app dependency and base-image finding?"
+  },
+  "C21": {
+    "meaning": "Shared configuration with measurable reuse, compatibility and adoption",
+    "followUp": "What changed before versus after? / How did you avoid a shared-module breaking change?"
+  },
+  "C22": {
+    "meaning": "Explain real boundaries, trade-offs and your specific contribution",
+    "followUp": "Draw the delivery and request paths. / Which alternative was rejected and why?"
+  },
+  "C23": {
+    "meaning": "Accurate prerequisites, commands, evidence, escalation and maintenance",
+    "followUp": "Could another engineer use your runbook? / How did you know it stayed current?"
+  },
+  "C24": {
+    "meaning": "Scope/acceptance criteria, change dependencies, status and communication",
+    "followUp": "How did you coordinate a release? / What did you do when a dependency blocked it?"
+  }
+}

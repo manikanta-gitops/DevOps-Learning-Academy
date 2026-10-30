@@ -1,0 +1,8 @@
+export interface Lesson { day: number; phase: number; title: string; path: string; resume: string[]; claims: string[]; questions: string[]; incident: string }
+export interface Project { id: string; title: string; path: string; checklist: string[] }
+export interface Incident { id: string; difficulty: string; resume: string[]; symptom: string; architecture: string; possibleCauses: string[]; evidence: { check: string; command: string; output: string }[]; prompt: string }
+export interface Question { id: string; day: number | null; priority: string; difficulty: string; type: string; question: string; whyAsked: string; followUps: string[]; resume: string[]; categories: string[] }
+export interface Claim { id: string; title: string; exercise: string; verification: string; meaning: string; followUp: string }
+export interface Course { lessons: Lesson[]; projects: Project[]; incidents: Incident[]; questions: Question[]; claims: Claim[]; answers: Record<string, string>; hints: Record<string, string>; solutions: Record<string, string>; files: Record<string, string>; categories: string[]; diagrams: { id: string; source: string }[] }
+export interface Practice { attempt: string; retry: string; hint: boolean; revealed: boolean; evidence: number[] }
+export interface Progress { version: 1; completed: Record<string, boolean>; checks: Record<string, boolean>; practices: Record<string, Practice>; lastLesson: number; theme: 'light' | 'dark' | 'system' }

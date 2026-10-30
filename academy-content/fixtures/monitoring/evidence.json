@@ -1,0 +1,10 @@
+{
+  "classification":"synthetic training evidence, not real telemetry",
+  "service":"checkout-demo","env":"lab","version":"2",
+  "trace":{"traceId":"1001","spans":[{"spanId":"2001","parentId":null,"operation":"HTTP GET /quote","durationMs":9,"error":true},{"spanId":"2002","parentId":"2001","operation":"load_price_mode","durationMs":8,"error":true,"errorType":"KeyError","message":"PRICE_MODE"}]},
+  "log":{"timestamp":"2026-01-01T10:00:00Z","traceId":"1001","spanId":"2002","service":"checkout-demo","env":"lab","version":"2","status":500,"error":"KeyError: PRICE_MODE"},
+  "rollbarExample":{"group":"training-missing-price-mode","environment":"lab","codeVersion":"2","exception":"KeyError: PRICE_MODE","firstSeenAfterConfigRevision":"lab-b"},
+  "metricsExample":{"requests":100,"errors":25,"windowSeconds":60,"note":"invented finite sample for arithmetic, not production measurements"},
+  "change":{"previousRevision":"lab-a","newRevision":"lab-b","difference":"required PRICE_MODE environment entry removed"},
+  "verificationTarget":{"httpStatus":200,"errorRecurrence":"none during controlled retest","note":"expected target, not a recorded successful recovery"}
+}

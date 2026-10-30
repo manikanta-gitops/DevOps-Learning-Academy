@@ -1,0 +1,11 @@
+{
+  "classification":"fictional training request",
+  "requester":"learner-example",
+  "application":"Datadog training organization",
+  "currentRole":"dashboard viewer",
+  "requestedRole":"Entra global administrator",
+  "businessNeed":"Edit one training dashboard for seven days",
+  "identityCheck":"SSO succeeded into the intended training organization",
+  "approval":"not granted",
+  "task":"Propose minimum product-specific permissions, approver, expiry, allowed/denied tests and revocation evidence without granting access."
+}

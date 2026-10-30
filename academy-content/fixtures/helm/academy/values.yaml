@@ -1,0 +1,14 @@
+replicaCount: 1
+image:
+  repository: academy
+  tag: '1'
+mode: normal
+resources:
+  requests: {cpu: 50m, memory: 32Mi}
+  limits: {cpu: 250m, memory: 128Mi}
+autoscaling:
+  enabled: false
+  minReplicas: 2
+  maxReplicas: 3
+pdb:
+  enabled: false

@@ -1,0 +1,49 @@
+name: Approved academy ECR publish
+on:
+  workflow_dispatch:
+    inputs:
+      approved:
+        description: Approved personal sandbox and ECR storage cost
+        required: true
+        type: boolean
+        default: false
+permissions:
+  contents: read
+jobs:
+  publish:
+    if: inputs.approved && github.ref == 'refs/heads/main'
+    environment: lab
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    env:
+      AWS_PAGER: ''
+      LAB_REGION: ${{ vars.LAB_REGION }}
+      LAB_AWS_ACCOUNT_ID: ${{ vars.LAB_AWS_ACCOUNT_ID }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test before publishing
+        run: python -m unittest discover -s fixtures/app -v
+      - name: Check sandbox configuration
+        run: |
+          : "${LAB_REGION:?Set the lab region}"
+          : "${LAB_AWS_ACCOUNT_ID:?Set the approved account ID}"
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.LAB_ROLE_ARN }}
+          aws-region: ${{ vars.LAB_REGION }}
+          allowed-account-ids: ${{ vars.LAB_AWS_ACCOUNT_ID }}
+      - name: Verify identity and publish
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(aws sts get-caller-identity --query Account --output text)" = "$LAB_AWS_ACCOUNT_ID"
+          registry="${LAB_AWS_ACCOUNT_ID}.dkr.ecr.${LAB_REGION}.amazonaws.com"
+          aws ecr get-login-password --region "$LAB_REGION" | docker login --username AWS --password-stdin "$registry"
+          docker build -t "$registry/academy:${GITHUB_SHA}" fixtures/app
+          docker push "$registry/academy:${GITHUB_SHA}"
+          docker logout "$registry"

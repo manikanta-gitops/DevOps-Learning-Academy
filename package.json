@@ -1,0 +1,45 @@
+{
+  "name": "devops-learning-academy",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "content:check": "node scripts/content.mjs --check-diagrams",
+    "diagrams": "node scripts/diagrams.mjs",
+    "predev": "npm run content:check",
+    "dev": "vite",
+    "build": "npm run content:check && tsc -b && vite build",
+    "lint": "oxlint",
+    "preview": "vite preview",
+    "test": "playwright test",
+    "test:root": "TEST_BASE=/ playwright test",
+    "test:report": "playwright show-report",
+    "package": "node scripts/package.mjs"
+  },
+  "engines": { "node": ">=24 <25" },
+  "dependencies": {
+    "@fontsource/ibm-plex-mono": "^5.3.0",
+    "@fontsource/ibm-plex-sans": "^5.3.0",
+    "lucide-react": "^1.65.0",
+    "mdast-util-to-string": "^4.0.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-markdown": "^10.1.0",
+    "react-router-dom": "^7.18.5",
+    "remark-gfm": "^4.0.1",
+    "remark-parse": "^11.0.0",
+    "unified": "^11.0.5"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.14.0",
+    "@playwright/test": "^1.64.1",
+    "@types/node": "^24.19.2",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "mermaid": "^12.2.0",
+    "oxlint": "^1.89.0",
+    "typescript": "~7.0.2",
+    "vite": "^8.3.5"
+  }
+}

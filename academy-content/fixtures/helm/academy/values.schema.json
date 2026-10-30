@@ -1,0 +1,10 @@
+{
+  "$schema":"https://json-schema.org/draft-07/schema#",
+  "type":"object",
+  "required":["replicaCount","image","mode"],
+  "properties":{
+    "replicaCount":{"type":"integer","minimum":1},
+    "mode":{"type":"string","enum":["normal","unready"]},
+    "image":{"type":"object","required":["repository","tag"],"properties":{"repository":{"type":"string","minLength":1},"tag":{"type":"string","minLength":1}}}
+  }
+}

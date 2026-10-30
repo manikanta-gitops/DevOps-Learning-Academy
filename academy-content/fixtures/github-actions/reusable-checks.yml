@@ -1,0 +1,28 @@
+name: Reusable training checks
+on:
+  workflow_call:
+    inputs:
+      training-environment:
+        required: true
+        type: string
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      TRAINING_ENVIRONMENT: ${{ inputs.training-environment }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate the caller input
+        shell: bash
+        run: |
+          case "$TRAINING_ENVIRONMENT" in
+            dev|qa) printf 'Checking training environment %s\n' "$TRAINING_ENVIRONMENT" ;;
+            *) exit 2 ;;
+          esac
+      - name: Test the shared sample
+        run: python -m unittest discover -s fixtures/app -v

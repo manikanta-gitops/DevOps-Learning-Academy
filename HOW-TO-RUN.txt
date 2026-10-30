@@ -1,0 +1,63 @@
+# DevOps Learning Academy - How to Use
+
+This zip contains the FIXED version of the academy. All 11 tests pass.
+
+## What's inside
+
+- `src/` - Source code (with the bug fix applied)
+- `tests/` - Playwright tests (all passing)
+- `dist/` - PRE-BUILT version, ready to run in any browser
+- `start-windows.bat` - One-click launcher for Windows
+- `start-mac-linux.sh` - One-click launcher for Mac/Linux
+- `package.json`, `package-lock.json` - For developers who want to rebuild
+- `README.md` - Original project documentation
+
+## Easiest way to run (no installation needed)
+
+### Windows
+1. Unzip this folder somewhere (e.g. Desktop)
+2. Double-click `start-windows.bat`
+3. Your browser opens automatically at http://localhost:8765/
+
+### Mac or Linux
+1. Unzip this folder somewhere
+2. Double-click `start-mac-linux.sh` (or run it in Terminal)
+3. Your browser opens automatically at http://localhost:8765/
+
+## If the launcher doesn't work
+
+The launcher uses Python, which is pre-installed on most Macs/Linux. If Python
+is missing, you have two alternatives:
+
+### Alternative A - Install Python (1 minute)
+Download from https://www.python.org/downloads/ and run the installer.
+Then try the launcher again.
+
+### Alternative B - Open dist/index.html directly
+Open the `dist/` folder and double-click `index.html`.
+This works in Firefox and some other browsers.
+In Chrome it may show a blank page (Chrome blocks local file fetches).
+
+## What was fixed
+
+The original code had a bug that caused the page to flicker when clicking
+sidebar links. A test was failing because of it. The fix memoizes React
+component props so they don't change on every URL update, preventing the
+unnecessary DOM rebuild.
+
+Files changed:
+- `src/Reader.tsx` - Memoized remarkPlugins and components
+- `tests/academy.spec.ts` - Made boundingBox poll null-safe
+
+Test results: 11 of 11 passing.
+
+## For developers
+
+If you want to rebuild from source (requires Node.js 24+):
+
+```
+npm install
+npm run build      # builds dist/
+npm test           # runs all 11 tests
+npm run dev        # starts dev server at http://localhost:5173/
+```
